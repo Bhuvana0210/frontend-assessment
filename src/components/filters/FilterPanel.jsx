@@ -2,128 +2,126 @@ import React, { useState } from "react";
 import { jobOptions } from "../../data/options";
 
 export default function FilterPanel({ setFilters }) {
-  const [job, setJob] = useState([]);
-  const [stage, setStage] = useState("");
-  const [company, setCompany] = useState("");
-  const [salaryMin, setSalaryMin] = useState("");
-  const [salaryMax, setSalaryMax] = useState("");
+    const [job, setJob] = useState([]);
+    const [stage, setStage] = useState("");
+    const [company, setCompany] = useState("");
+    const [salaryMin, setSalaryMin] = useState("");
+    const [salaryMax, setSalaryMax] = useState("");
 
-  // Toggle job checkboxes
-  const toggleJob = (title) => {
-    if (job.includes(title)) {
-      setJob(job.filter((x) => x !== title)); // remove
-    } else {
-      setJob([...job, title]); // add
-    }
-  };
+    const toggleJob = (title) => {
+        setJob((prev) =>
+            prev.includes(title)
+                ? prev.filter((j) => j !== title)
+                : [...prev, title]
+        );
+    };
 
-  // APPLY FILTERS
-  const apply = () => {
-    setFilters({
-      job,
-      stage,
-      company,
-      salaryMin: salaryMin === "" ? 0 : Number(salaryMin),
-      salaryMax: salaryMax === "" ? 5000000 : Number(salaryMax),
-    });
-  };
+    const apply = () => {
+        setFilters({
+            job: [],
+            stage: "",
+            company: "",
+            salaryMin: "",
+            salaryMax: ""
+        });
 
-  // CLEAR ALL FILTERS
-  const clear = () => {
-    setJob([]);
-    setStage("");
-    setCompany("");
-    setSalaryMin("");
-    setSalaryMax("");
+    };
 
-    setFilters({}); // Reset global filters
-  };
+    const clear = () => {
+        setJob([]);
+        setStage("");
+        setCompany("");
+        setSalaryMin("");
+        setSalaryMax("");
 
-  return (
-<aside className="w-64 p-4 border-r bg-white dark:bg-gray-900 dark:border-gray-700">
-      <h2 className="text-lg font-bold mb-4">Filters</h2>
+        setFilters({});
+    };
 
-      {/* JOB MULTISELECT */}
-      <label className="font-semibold">Jobs</label>
-      <div className="flex flex-col border p-2 rounded mb-3 max-h-32 overflow-auto">
-        {jobOptions.map((title) => (
-          <label key={title} className="text-sm cursor-pointer">
+    return (
+        <aside className="w-72 bg-white dark:bg-gray-900 border-r dark:border-gray-700 p-4">
+            <h2 className="text-lg font-bold mb-4 dark:text-white">Filters</h2>
+
+            {/* JOBS */}
+            <label className="font-semibold dark:text-gray-200">Jobs</label>
+            <div className="border rounded p-2 mb-4 max-h-32 overflow-auto dark:border-gray-700">
+                {jobOptions.map((title) => (
+                    <label key={title} className="block text-sm dark:text-gray-300">
+                        <input
+                            type="checkbox"
+                            checked={job.includes(title)}
+                            onChange={() => toggleJob(title)}
+                            className="mr-2"
+                        />
+                        {title}
+                    </label>
+                ))}
+            </div>
+
+            {/* STAGE */}
+            <label className="font-semibold dark:text-gray-200">Stage</label>
+            <select
+                value={stage}
+                onChange={(e) => setStage(e.target.value)}
+                className="w-full border p-2 mb-4 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded"
+            >
+                <option value="">Any Stage</option>
+                <option>Applied</option>
+                <option>Screening</option>
+                <option>Interview</option>
+                <option>Offer</option>
+                <option>Hired</option>
+            </select>
+
+            {/* COMPANY */}
+            <label className="font-semibold dark:text-gray-200">Company</label>
+            <select
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="w-full border p-2 mb-4 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded"
+            >
+                <option value="">Any Company</option>
+                <option>Google</option>
+                <option>Microsoft</option>
+                <option>Amazon</option>
+                <option>StartupX</option>
+                <option>Infosys</option>
+            </select>
+
+            {/* SALARY */}
             <input
-              type="checkbox"
-              checked={job.includes(title)}
-              onChange={() => toggleJob(title)}
-              className="mr-2"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                value={salaryMin}
+                placeholder="e.g. 300000"
+                onChange={(e) => setSalaryMin(e.target.value)}
+                className="w-full border p-2 mb-4 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded"
             />
-            {title}
-          </label>
-        ))}
-      </div>
 
-      {/* STAGE */}
-      <label className="font-semibold">Stage</label>
-      <select
-        className="w-full border mb-3 p-1 rounded"
-        value={stage}
-        onChange={(e) => setStage(e.target.value)}
-      >
-        <option value="">Any Stage</option>
-        <option>Applied</option>
-        <option>Screening</option>
-        <option>Interview</option>
-        <option>Offer</option>
-        <option>Hired</option>
-      </select>
+            <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                value={salaryMax}
+                placeholder="e.g. 1500000"
+                onChange={(e) => setSalaryMax(e.target.value)}
+                className="w-full border p-2 mb-4 dark:bg-gray-800 dark:border-gray-700 dark:text-white rounded"
+            />
 
-      {/* COMPANY */}
-      <label className="font-semibold">Company</label>
-      <select
-        className="w-full border mb-3 p-1 rounded"
-        value={company}
-        onChange={(e) => setCompany(e.target.value)}
-      >
-        <option value="">Any Company</option>
-        <option>Google</option>
-        <option>Microsoft</option>
-        <option>Amazon</option>
-        <option>StartupX</option>
-        <option>Infosys</option>
-      </select>
 
-      {/* SALARY MIN */}
-      <label className="font-semibold">Salary Min</label>
-      <input
-        className="w-full border mb-3 p-1 rounded"
-        type="number"
-        placeholder="e.g. 300000"
-        value={salaryMin}
-        onChange={(e) => setSalaryMin(e.target.value)}
-      />
+            <button
+                onClick={apply}
+                className="w-full bg-blue-600 text-white py-2 rounded mt-2"
+            >
+                Apply Filters
+            </button>
 
-      {/* SALARY MAX */}
-      <label className="font-semibold">Salary Max</label>
-      <input
-        className="w-full border mb-3 p-1 rounded"
-        type="number"
-        placeholder="e.g. 1500000"
-        value={salaryMax}
-        onChange={(e) => setSalaryMax(e.target.value)}
-      />
-
-      {/* APPLY BUTTON */}
-      <button
-        onClick={apply}
-        className="w-full bg-blue-600 text-white py-2 rounded mt-3"
-      >
-        Apply Filters
-      </button>
-
-      {/* CLEAR BUTTON */}
-      <button
-        onClick={clear}
-        className="w-full bg-gray-600 text-white py-2 rounded mt-3"
-      >
-        Clear All Filters
-      </button>
-    </aside>
-  );
+            <button
+                onClick={clear}
+                className="w-full bg-gray-600 text-white py-2 rounded mt-2"
+            >
+                Clear All Filters
+            </button>
+        </aside>
+    );
 }
