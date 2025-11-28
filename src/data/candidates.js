@@ -1,4 +1,4 @@
-// Simple mock data without faker (safe for interview)
+// Simple mock data without faker
 // Creates 300–500 candidates with realistic structure
 
 const stages = ["Applied", "Screening", "Interview", "Offer", "Hired"];

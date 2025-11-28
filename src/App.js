@@ -8,6 +8,7 @@ import FilterPanel from "./components/filters/FilterPanel";
 import DataTable from "./components/table/DataTable";
 import FooterInfo from "./components/table/FooterInfo";
 import ProfileModal from "./components/profile/ProfileModal";
+import Navbar from "./components/navbar"
 
 function App() {
   const [candidates, setCandidates] = useState(mock);
@@ -27,8 +28,12 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 dark:text-white">
+
+      <Navbar />
+
+
+
       <FilterPanel setFilters={setFilters} />
 
       <div className="flex-1 p-4">

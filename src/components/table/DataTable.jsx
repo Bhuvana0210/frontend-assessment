@@ -28,7 +28,7 @@ export default function DataTable({
   };
 
   return (
-    <div className="bg-white shadow rounded">
+<div className="bg-white dark:bg-gray-900 shadow rounded dark:shadow-gray-700">
       
       <TableHeader sort={sort} onSort={toggleSort} onSelectAll={toggleSelectAll} />
 

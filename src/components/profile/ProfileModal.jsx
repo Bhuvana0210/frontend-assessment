@@ -1,6 +1,8 @@
 export default function ProfileModal({ candidate, onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
+    // <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
+        <div className="fixed inset-0 bg-white dark:bg-gray-900 p-4 rounded justify-center items-center">
+
       <div className="bg-white w-96 p-4 rounded shadow">
         <h2 className="text-xl font-bold mb-2">{candidate.name}</h2>
 

@@ -2,7 +2,7 @@ import InlineEditCell from "./InlineEditCell";
 
 export default function TableRow({ item, isSelected, toggleSelect, onEdit, onRowClick }) {
   return (
-    <div className="grid grid-cols-6 border-b py-2 hover:bg-gray-50 cursor-pointer">
+    <div className="grid grid-cols-8 border-b dark:border-gray-700 dark:hover:bg-gray-800 cursor-pointer">
       
       <div className="pl-2">
         <input type="checkbox" checked={isSelected} onChange={toggleSelect} />

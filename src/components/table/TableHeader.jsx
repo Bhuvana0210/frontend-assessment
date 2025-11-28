@@ -9,7 +9,7 @@ export default function TableHeader({ sort, onSort, onSelectAll }) {
   ];
 
   return (
-    <div className="grid grid-cols-6 bg-gray-100 border-b py-2 font-bold">
+    <div className="grid grid-cols-8 border-b dark:border-gray-700 dark:hover:bg-gray-800 cursor-pointer">
       <div className="pl-2">
         <input type="checkbox" onChange={onSelectAll} />
       </div>
