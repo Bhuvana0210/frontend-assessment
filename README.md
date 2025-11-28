@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+## Frontend Assignment – React + Tailwind CSS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Introduction
 
-## Available Scripts
+I structured the code using a feature-based and responsibility-separated approach.
+Filters, table, and profile view are modular.
+Heavy logic such as filtering, sorting, and bulk updates lives inside custom hooks and utilities.
+The UI remains responsive with virtualization and memoization.
 
-In the project directory, you can run:
+## 2. Tech Stack
 
-### `npm start`
+React (CRA) – component-based UI development
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Tailwind CSS v3 – utility-first styling
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React Icons – scalable vector icons
 
-### `npm test`
+JavaScript (ES6+)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Folder Structure
+src/
+│
+├── assets/
+│   └── icons/              # Optional – icons for UI
+│
+├── data/
+│   ├── candidates.js       # Mock dataset (500–1000 entries)
+│   └── options.js          # Dropdown values: stages, companies, jobs
+│
+├── hooks/
+│   ├── useFilters.js       # Handle filter logic
+│   ├── useSort.js          # Handle sorting logic
+│   ├── useVirtualTable.js  # Virtual scroll (react-window)
+│   └── useBulkActions.js   # Bulk actions update logic
+│
+├── components/
+│   │
+│   ├── filters/
+│   │   ├── FilterPanel.jsx       # Main filter panel layout
+│   │   ├── FilterGroup.jsx       # Reusable group container
+│   │   ├── MultiSelect.jsx       # Job multiselect
+│   │   └── SalaryRange.jsx       # Range slider/input
+│   │
+│   ├── table/
+│   │   ├── DataTable.jsx         # Parent table component
+│   │   ├── TableHeader.jsx       # Sortable headers
+│   │   ├── TableRow.jsx          # One row renderer
+│   │   ├── InlineEditCell.jsx    # Supports inline edit
+│   │   ├── MultiItemCell.jsx     # View More / View Less
+│   │   ├── RowCheckbox.jsx       # Row selection
+│   │   ├── BulkActionsBar.jsx    # Bulk actions toolbar
+│   │   └── FooterInfo.jsx        # Showing X–Y of Z
+│   │
+│   ├── profile/
+│   │   └── ProfileModal.jsx      # Full candidate view
+│   │
+│   └── common/
+│       ├── Button.jsx
+│       ├── Checkbox.jsx
+│       ├── Modal.jsx
+│       └── Select.jsx
+│
+├── utils/
+│   ├── filterUtils.js            # filter functions
+│   ├── sortUtils.js              # sorting logic
+│   ├── formatUtils.js            # date, salary format
+│   └── generateMock.js           # optional faker-based mock data generator
+│
+├── styles/
+│   └── main.css                  # global CSS (or Tailwind setup)
+│
+├── App.jsx                       # main page layout
+└── main.jsx                      # entry point
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 4. Approach
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Followed component-based structure for modularity
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Divided UI into pages, sections, and reusable components
 
-### `npm run eject`
+Used Tailwind CSS for fast, consistent styling
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Implemented responsive layouts using flex, grid, and breakpoints
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Integrated React Icons for UI visuals
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Ensured clean, readable, and maintainable code
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 5. How to Run the Project
+npm install
+npm start
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project will run on http://localhost:3000/
+.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 6. (Optional but recommended) Key Features
 
-### Code Splitting
+Responsive layout
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clean component structure
 
-### Analyzing the Bundle Size
+Utility-based styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Easy to extend for additional features
