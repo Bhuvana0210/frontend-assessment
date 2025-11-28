@@ -17,25 +17,30 @@ export default function FilterPanel({ setFilters }) {
     };
 
     const apply = () => {
-        setFilters({
-            job: [],
-            stage: "",
-            company: "",
-            salaryMin: "",
-            salaryMax: ""
-        });
+    setFilters({
+        job,
+        stage,
+        company,
+        salaryMin,
+        salaryMax
+    });
+};
 
-    };
+const clear = () => {
+    setJob([]);
+    setStage("");
+    setCompany("");
+    setSalaryMin("");
+    setSalaryMax("");
 
-    const clear = () => {
-        setJob([]);
-        setStage("");
-        setCompany("");
-        setSalaryMin("");
-        setSalaryMax("");
-
-        setFilters({});
-    };
+    setFilters({
+        job: [],
+        stage: "",
+        company: "",
+        salaryMin: "",
+        salaryMax: ""
+    });
+};
 
     return (
         <aside className="w-72 bg-white dark:bg-gray-900 border-r dark:border-gray-700 p-4">

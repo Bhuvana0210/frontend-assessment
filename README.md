@@ -1,58 +1,82 @@
-## Frontend Assignment – React + Tailwind CSS
+Here is a **clean, polished, professional README.md** for your project.
+It’s structured the way hiring managers expect, and clearly communicates your architecture, thinking, and skills.
 
-## 1. Introduction
+You can **copy–paste directly**.
 
-I structured the code using a feature-based and responsibility-separated approach.
-Filters, table, and profile view are modular.
-Heavy logic such as filtering, sorting, and bulk updates lives inside custom hooks and utilities.
-The UI remains responsive with virtualization and memoization.
+---
 
-## 2. Tech Stack
+# 📘 **Frontend Assignment – React + Tailwind CSS**
 
-React (CRA) – component-based UI development
+A fully structured, modular, and scalable frontend assignment built using **React** and **Tailwind CSS**, featuring filtering, sorting, pagination, inline editing, and a detailed candidate profile view.
 
-Tailwind CSS v3 – utility-first styling
+---
 
-React Icons – scalable vector icons
+## 🚀 **1. Overview**
 
-JavaScript (ES6+)
+This project demonstrates a clean, scalable frontend architecture following a **feature-based folder structure**.
+All UI pieces such as filters, table, and profile modal are modular and reusable.
 
-## 3. Folder Structure
+Performance-sensitive logic—like filtering, sorting, memoized rendering, and bulk actions—is separated into dedicated utility files and custom hooks for readability and easy maintenance.
+
+The table supports:
+
+* Sorting
+* Multi-filtering
+* Pagination
+* Inline editing
+* Bulk selection
+* Profile modal view
+
+---
+
+## 🛠 **2. Tech Stack**
+
+* **React (CRA)** – UI development
+* **Tailwind CSS v3** – Utility-first styling
+* **JavaScript (ES6+)**
+* **React Icons** – UI icons
+* **Custom Hooks** – for filters, sorting, bulk actions, virtualization
+
+---
+
+## 📁 **3. Folder Structure**
+
+```
 src/
 │
 ├── assets/
-│   └── icons/              # Optional – icons for UI
+│   └── icons/
 │
 ├── data/
-│   ├── candidates.js       # Mock dataset (500–1000 entries)
-│   └── options.js          # Dropdown values: stages, companies, jobs
+│   ├── candidates.js      # Sample dataset (mock)
+│   └── options.js         # Dropdown values
 │
 ├── hooks/
-│   ├── useFilters.js       # Handle filter logic
-│   ├── useSort.js          # Handle sorting logic
-│   ├── useVirtualTable.js  # Virtual scroll (react-window)
-│   └── useBulkActions.js   # Bulk actions update logic
+│   ├── useFilters.js      # Handles filter logic (optional)
+│   ├── useSort.js         # Stable sort logic
+│   ├── useVirtualTable.js # Virtual scrolling (optional)
+│   └── useBulkActions.js  # Multi-select logic
 │
 ├── components/
 │   │
 │   ├── filters/
-│   │   ├── FilterPanel.jsx       # Main filter panel layout
-│   │   ├── FilterGroup.jsx       # Reusable group container
-│   │   ├── MultiSelect.jsx       # Job multiselect
-│   │   └── SalaryRange.jsx       # Range slider/input
+│   │   ├── FilterPanel.jsx
+│   │   ├── FilterGroup.jsx
+│   │   ├── MultiSelect.jsx
+│   │   └── SalaryRange.jsx
 │   │
 │   ├── table/
-│   │   ├── DataTable.jsx         # Parent table component
-│   │   ├── TableHeader.jsx       # Sortable headers
-│   │   ├── TableRow.jsx          # One row renderer
-│   │   ├── InlineEditCell.jsx    # Supports inline edit
-│   │   ├── MultiItemCell.jsx     # View More / View Less
-│   │   ├── RowCheckbox.jsx       # Row selection
-│   │   ├── BulkActionsBar.jsx    # Bulk actions toolbar
-│   │   └── FooterInfo.jsx        # Showing X–Y of Z
+│   │   ├── DataTable.jsx
+│   │   ├── TableHeader.jsx
+│   │   ├── TableRow.jsx
+│   │   ├── InlineEditCell.jsx
+│   │   ├── MultiItemCell.jsx
+│   │   ├── RowCheckbox.jsx
+│   │   ├── BulkActionsBar.jsx
+│   │   └── FooterInfo.jsx
 │   │
 │   ├── profile/
-│   │   └── ProfileModal.jsx      # Full candidate view
+│   │   └── ProfileModal.jsx
 │   │
 │   └── common/
 │       ├── Button.jsx
@@ -61,46 +85,99 @@ src/
 │       └── Select.jsx
 │
 ├── utils/
-│   ├── filterUtils.js            # filter functions
-│   ├── sortUtils.js              # sorting logic
-│   ├── formatUtils.js            # date, salary format
-│   └── generateMock.js           # optional faker-based mock data generator
+│   ├── filterUtils.js
+│   ├── sortUtils.js
+│   ├── formatUtils.js
+│   └── generateMock.js
 │
 ├── styles/
-│   └── main.css                  # global CSS (or Tailwind setup)
+│   └── main.css
 │
-├── App.jsx                       # main page layout
-└── main.jsx                      # entry point
+├── App.jsx
+└── main.jsx
+```
 
+---
 
-## 4. Approach
+## 🧠 **4. Architecture & Approach**
 
-Followed component-based structure for modularity
+### ✔ Component-Based
 
-Divided UI into pages, sections, and reusable components
+Each UI piece (filters, table, row, modal) is built as an isolated component.
 
-Used Tailwind CSS for fast, consistent styling
+### ✔ Feature-Based Folder Structure
 
-Implemented responsive layouts using flex, grid, and breakpoints
+Files grouped by functionality instead of type → easy to scale.
 
-Integrated React Icons for UI visuals
+### ✔ Custom Hooks
 
-Ensured clean, readable, and maintainable code
+Filtering, sorting, selection, and virtualization are abstracted away for cleaner UI code.
 
-## 5. How to Run the Project
+### ✔ Utility-Driven Logic
+
+`filterUtils.js` and `sortUtils.js` contain reusable pure functions.
+
+### ✔ Tailwind CSS
+
+Fast, consistent styling with responsive utilities and theme-based dark mode.
+
+### ✔ Performance
+
+Memoization + controlled rerenders keep UI smooth even with large datasets.
+
+---
+
+## ⭐ **5. Key Features**
+
+* 🔍 **Advanced Filtering**
+
+  * Job multiselect
+  * Stage, company, salary range
+
+* ↕ **Sorting** on all major columns
+
+* ✏ **Inline Editing** for candidate fields
+
+* ✔ **Bulk Selection + Bulk Actions**
+
+* 📄 **Profile Modal** (Full candidate details)
+
+* 🔢 **Pagination**
+
+* 🎨 **Responsive UI** (Tailwind)
+
+---
+
+## ▶️ **6. How to Run the Project**
+
+### **Install dependencies**
+
+```bash
 npm install
+```
+
+### **Start development server**
+
+```bash
 npm start
+```
 
+Runs on:
 
-The project will run on http://localhost:3000/
-.
+👉 [http://localhost:3000](http://localhost:3000)
 
-## 6. (Optional but recommended) Key Features
+---
 
-Responsive layout
+## 📌 **7. Summary**
 
-Clean component structure
+This project demonstrates:
 
-Utility-based styling
+* clean code structure
+* reusable React components
+* Tailwind-powered UI
+* separation of logic using utilities & hooks
+* production-ready filtering, sorting, pagination, and inline editing
 
-Easy to extend for additional features
+It is designed to be **scalable, readable, and easy to extend**.
+
+---

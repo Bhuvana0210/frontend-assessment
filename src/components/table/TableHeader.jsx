@@ -15,10 +15,13 @@ export default function TableHeader({ sort, onSort, onSelectAll }) {
   );
 
   return (
-<div className="grid grid-cols-6 border-b bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
-      <div className="pl-2 py-2">
+    <div className="grid grid-cols-[50px,1fr,1fr,1fr,1fr,1fr] border-b bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
+      
+      {/* FIXED — same padding as TableRow */}
+      <div className="py-2 px-3 flex items-center">
         <input type="checkbox" onChange={onSelectAll} />
       </div>
+
       <div className={cellClass}>{sortable("name", "Name")}</div>
       <div className={cellClass}>{sortable("company", "Company")}</div>
       <div className={cellClass}>{sortable("stage", "Stage")}</div>
